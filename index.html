@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./estilos/style.css">
+    <title>Calculadora</title>
+</head>
+<body>
+    <header>
+        <img src="./assets/icon.jpg" alt="icon">
+        <h1>Calculadora</h1>
+    </header>
+    <main>
+        <div>
+            <p id="saludo"></p>
+        </div>
+        <div>
+            <label for="">Ingrese el primer numero</label>
+            <input type="number" id="num1"><br></br>
+            <label for="">Ingrese el segundo numero</label>
+            <input type="number" id="num2">
+        </div>
+        <div>
+            <button type="button" onclick = "sumar()">+</button>
+            <button type="button" onclick="resta()">-</button>
+            <button type="button" onclick="multiplicar()">*</button>
+            <button type="button" onclick="dividir()">/</button>
+        </div>
+        <div>
+            <p id = "resultado"></p>
+        </div>
+        <div>
+            <p>Historial de resultados</p>
+            <p id="historial"></p>
+            <button type="button" class="btnBorrar" onclick="borrarHistorial()">Borrar</button>
+        </div>
+    </main>
+    <script src="./js/js.js"></script>
+</body>
+</html>

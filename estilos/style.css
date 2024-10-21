@@ -1,0 +1,21 @@
+* {
+    font-family: sans-serif;
+}
+
+header {
+    display: flex;
+}
+
+img {
+    width: 90px;
+    margin-right: 25px;
+}
+
+button {
+    margin: 10px;
+    width: 20px;
+}
+
+.btnBorrar {
+    width: 80px;
+}
