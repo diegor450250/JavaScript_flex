@@ -1,4 +1,4 @@
-        var nombre = prompt("Hola cual es tu nombre")
+        const nombre = prompt("Hola cual es tu nombre")
         while (nombre == null || nombre.length == 0) {
             nombre = prompt("Que me des tu nombre")
         }
@@ -7,39 +7,40 @@
         const historial = [];
 
         function AddHistorial(num1, num2, result, operacion) {
-           var operador = " " + operacion + " ";
+           let operador = " " + operacion + " ";
             historial.push(num1 + operador + num2 + " = " + result);
             document.getElementById('historial').innerText = historial;
         }
 
-        function sumar() {
-            var num1 = parseInt(document.getElementById('num1').value);
-            var num2 = parseInt(document.getElementById('num2').value);
-            var result = num1 + num2;
+        function sumar() { 
+            let num1 = parseInt(document.getElementById('num1').value);
+            let num2 = parseInt(document.getElementById('num2').value);
+            let result = num1 + num2;
             document.getElementById('resultado').innerText = "El resultado es " + result;
             AddHistorial(num1, num2, result, "+")
+
         }
 
         function resta() {
-            var num1 = parseInt(document.getElementById('num1').value);
-            var num2 = parseInt(document.getElementById('num2').value);
-            var result = num1 - num2;
+            let num1 = parseInt(document.getElementById('num1').value);
+            let num2 = parseInt(document.getElementById('num2').value);
+            let result = num1 - num2;
             document.getElementById('resultado').innerText = "El resultado es " + result;
             AddHistorial(num1, num2, result, "-")
         }
 
         function multiplicar() {
-            var num1 = parseInt(document.getElementById('num1').value);
-            var num2 = parseInt(document.getElementById('num2').value);
-            var result = num1 * num2;
+            let num1 = parseInt(document.getElementById('num1').value);
+            let num2 = parseInt(document.getElementById('num2').value);
+            let result = num1 * num2;
             document.getElementById('resultado').innerText = "El resultado es " + result;
             AddHistorial(num1, num2, result, "*")
         }
 
         function dividir() {
-            var num1 = parseInt(document.getElementById('num1').value);
-            var num2 = parseInt(document.getElementById('num2').value);
-            var result = num1 / num2;
+            let num1 = parseInt(document.getElementById('num1').value);
+            let num2 = parseInt(document.getElementById('num2').value);
+            let result = num1 / num2;
             document.getElementById('resultado').innerText = "El resultado es " + result;
             AddHistorial(num1, num2, result, "/")
         }
@@ -47,4 +48,14 @@
         function borrarHistorial() {
             historial.length = 0;
             document.getElementById('historial').innerText = historial;
+        }
+
+        function validarInput(fun) {
+            let num1 = document.getElementById('num1').value;
+            let num2 = document.getElementById('num2').value;
+            if (num1.length == 0|| num2.length == 0) {
+                alert("Llena todos los campos");
+            } else {
+                fun();
+            }
         }

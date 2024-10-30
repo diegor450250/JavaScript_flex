@@ -22,10 +22,10 @@
             <input type="number" id="num2">
         </div>
         <div>
-            <button type="button" onclick = "sumar()">+</button>
-            <button type="button" onclick="resta()">-</button>
-            <button type="button" onclick="multiplicar()">*</button>
-            <button type="button" onclick="dividir()">/</button>
+            <button type="button" onclick = "validarInput(sumar())">+</button>
+            <button type="button" onclick = "validarInput(resta())">-</button>
+            <button type="button" onclick = "validarInput(multiplicar())">*</button>
+            <button type="button" onclick = "validarInput(dividir())">/</button>
         </div>
         <div>
             <p id = "resultado"></p>
@@ -33,7 +33,7 @@
         <div>
             <p>Historial de resultados</p>
             <p id="historial"></p>
-            <button type="button" class="btnBorrar" onclick="borrarHistorial()">Borrar</button>
+            <button type="button" class="btnBorrar" onclick="borrarHistorial()">Borrar historial</button>
         </div>
     </main>
     <script src="./js/js.js"></script>
