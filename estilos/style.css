@@ -29,12 +29,20 @@ body {
     transition: color 2s;
 }
 
+input {
+    background-color: rgb(236, 234, 234);
+}
+
 .night-mode {
     background-color: rgba(0, 0, 0, 0.904);
     color: white;
     button {
         background-color: rgb(160, 110, 207);
         border-color: rgb(149, 43, 248);
+        color: white;
+    }
+    input {
+        background-color: rgb(160, 110, 207);
         color: white;
     }
 }
