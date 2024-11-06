@@ -1,5 +1,6 @@
 * {
     font-family: sans-serif;
+    text-align: center;
 }
 
 header {
@@ -12,12 +13,28 @@ img {
 }
 
 button {
-    margin: 10px;
-    width: 20px;
-}
-
-.btnBorrar {
     width: 80px;
+    border-radius: 5px;
 }
 
+.btnOperador {
+    margin: 10px;
+    width: 40px;
+}
 
+body {
+    background-color: white;
+    color: black;
+    transition: background-color 2s;
+    transition: color 2s;
+}
+
+.night-mode {
+    background-color: rgba(0, 0, 0, 0.904);
+    color: white;
+    button {
+        background-color: rgb(160, 110, 207);
+        border-color: rgb(149, 43, 248);
+        color: white;
+    }
+}

@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <img src="./assets/icon.jpg" alt="icon">
+        <img src="./assets/vector-calculator-icon-design.jpg" alt="icon">
         <h1>Calculadora</h1>
     </header>
     <main>
@@ -22,10 +22,10 @@
             <input type="number" id="num2">
         </div>
         <div>
-            <button type="button" onclick = "validarInput(sumar())">+</button>
-            <button type="button" onclick = "validarInput(resta())">-</button>
-            <button type="button" onclick = "validarInput(multiplicar())">*</button>
-            <button type="button" onclick = "validarInput(dividir())">/</button>
+            <button type="button" class="btnOperador" onclick = "validarInput(sumar())">+</button>
+            <button type="button" class="btnOperador" onclick = "validarInput(resta())">-</button>
+            <button type="button" class="btnOperador" onclick = "validarInput(multiplicar())">*</button>
+            <button type="button" class="btnOperador" onclick = "validarInput(dividir())">/</button>
         </div>
         <div>
             <p id = "resultado"></p>
@@ -33,7 +33,10 @@
         <div>
             <p>Historial de resultados</p>
             <p id="historial"></p>
-            <button type="button" class="btnBorrar" onclick="borrarHistorial()">Borrar historial</button>
+            <div>   
+                <button type="button" class="btnBorrar" onclick="borrarHistorial()">Borrar historial</button>
+                <button type="button" class="btnModoNoche" onclick="modoNoche()">Modo Noche</button>
+            </div> 
         </div>
     </main>
     <script src="./js/js.js"></script>
