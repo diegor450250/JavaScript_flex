@@ -1,4 +1,26 @@
+const ResultHistorial = []; 
+
 document.addEventListener('DOMContentLoaded', saludar() );
+
+document.addEventListener('DOMContentLoaded', ValidarLclStorage);
+
+function ValidarLclStorage () {
+    const arrayLcl = [];
+    arrayLcl.unshift(JSON.parse(localStorage.getItem('historial')));
+    for (let x = 0; x < arrayLcl[0].length; x++) {
+        const nuevoP = document.createElement("p");
+    nuevoP.innerText = arrayLcl[0][x];
+    ResultHistorial.push(arrayLcl[0][x])
+    nuevoP.classList.add('historial')
+    const contenedor = document.getElementById("contenedor-historial");
+    if (contenedor.firstChild) {
+        contenedor.insertBefore(nuevoP, contenedor.firstChild);
+    }else {
+        contenedor.appendChild(nuevoP);
+    }
+    }
+
+}
 
 function saludar (){
     const nombre = prompt("Hola cual es tu nombre");
@@ -12,11 +34,22 @@ function saludar (){
 }        
 
 function AddHistorial(num1, num2, result, operacion) {
+    const resultado = num1 + " " + operacion + " " + num2 + " = " + result;
+    HistorialHtml(resultado);
+    ResultHistorial.unshift(resultado);
+    localStorage.setItem('historial', JSON.stringify(ResultHistorial));
+}
+
+function HistorialHtml(resultado) {
     const nuevoP = document.createElement("p");
-    nuevoP.innerText = num1 + " " + operacion + " " + num2 + " = " + result;
+    nuevoP.innerText = resultado;
     nuevoP.classList.add('historial')
     const contenedor = document.getElementById("contenedor-historial");
-    contenedor.appendChild(nuevoP);
+    if (contenedor.firstChild) {
+        contenedor.insertBefore(nuevoP, contenedor.firstChild);
+    }else {
+        contenedor.appendChild(nuevoP);
+    }
 }
 
 function sumar() { 
@@ -55,6 +88,7 @@ function dividir() {
 function borrarHistorial() {
     const pHitsorial = document.querySelectorAll('.historial');
     pHitsorial.forEach(parrafo => parrafo.remove());
+    localStorage.clear();
 }
 
 function validarInput(callback) {
