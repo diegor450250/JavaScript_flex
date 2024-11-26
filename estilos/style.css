@@ -5,11 +5,16 @@
 
 header {
     display: flex;
+    justify-content: space-between;
 }
 
 img {
     width: 90px;
     margin-right: 25px;
+}
+
+.imgHeader {
+    border-radius: 20px;
 }
 
 button {
@@ -45,4 +50,8 @@ input {
         background-color: rgb(160, 110, 207);
         color: white;
     }
+}
+
+.hder {
+    display: flex;
 }

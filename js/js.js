@@ -1,25 +1,27 @@
 const ResultHistorial = []; 
 
+let segundos = 0;
+let minutos = 0;
+
 document.addEventListener('DOMContentLoaded', saludar() );
 
 document.addEventListener('DOMContentLoaded', ValidarLclStorage);
 
 function ValidarLclStorage () {
-    const arrayLcl = [];
-    arrayLcl.unshift(JSON.parse(localStorage.getItem('historial')));
-    for (let x = 0; x < arrayLcl[0].length; x++) {
-        const nuevoP = document.createElement("p");
-    nuevoP.innerText = arrayLcl[0][x];
-    ResultHistorial.push(arrayLcl[0][x])
-    nuevoP.classList.add('historial')
-    const contenedor = document.getElementById("contenedor-historial");
-    if (contenedor.firstChild) {
-        contenedor.insertBefore(nuevoP, contenedor.firstChild);
-    }else {
+    try { 
+        const arrayLcl = [];
+        arrayLcl.unshift(JSON.parse(localStorage.getItem('historial')));
+        for (let x = 0; x < arrayLcl[0].length; x++) {
+            const nuevoP = document.createElement("p");
+        nuevoP.innerText = arrayLcl[0][x];
+        ResultHistorial.push(arrayLcl[0][x])
+        nuevoP.classList.add('historial')
+        const contenedor = document.getElementById("contenedor-historial");
         contenedor.appendChild(nuevoP);
+        }
+    } catch (error) {
+        console.log("No se encontro un historial")
     }
-    }
-
 }
 
 function saludar (){
@@ -58,6 +60,7 @@ function sumar() {
     let result = num1 + num2;
     document.getElementById('resultado').innerText = "El resultado es " + result;
     AddHistorial(num1, num2, result, "+")
+    imagenRandom()
 
 }
 
@@ -67,6 +70,7 @@ function resta() {
     let result = num1 - num2;
     document.getElementById('resultado').innerText = "El resultado es " + result;
     AddHistorial(num1, num2, result, "-")
+    imagenRandom()
 }
 
 function multiplicar() {
@@ -75,6 +79,7 @@ function multiplicar() {
     let result = num1 * num2;
     document.getElementById('resultado').innerText = "El resultado es " + result;
     AddHistorial(num1, num2, result, "*")
+    imagenRandom()
 }
 
 function dividir() {
@@ -83,6 +88,20 @@ function dividir() {
     let result = num1 / num2;
     document.getElementById('resultado').innerText = "El resultado es " + result;
     AddHistorial(num1, num2, result, "/")
+    imagenRandom()
+}
+
+function imagenRandom() {
+    try {
+        fetch("https://dog.ceo/api/breeds/image/random")
+        .then(response => response.json())
+        .then(data => {
+            const imagen = document.getElementById('imagenRandom')
+            imagen.src = data.message;
+        });
+    } catch (error) {
+        console.log("No se pudo traer la imagen ")
+    }
 }
 
 function borrarHistorial() {
@@ -104,3 +123,16 @@ function validarInput(callback) {
 function modoNoche() {
     document.body.classList.toggle('night-mode');
 }
+
+function timerPagina() {
+    cronometro = document.getElementById('cronometro');
+    segundos++;
+    if (segundos == 60) {
+        minutos++;
+        segundos = 0;
+    }
+    cronometro.innerText = minutos + ":" + segundos;
+    
+}
+
+setInterval(timerPagina, 1000)
