@@ -20,19 +20,25 @@ function ValidarLclStorage () {
         contenedor.appendChild(nuevoP);
         }
     } catch (error) {
-        console.log("No se encontro un historial")
     }
 }
 
-function saludar (){
-    const nombre = prompt("Hola cual es tu nombre");
-    if (nombre == '' || nombre == null) {
-                alert("Es un gusto tenerte por aqui desconocido");
-                document.getElementById('saludo').innerText = 'Bienvenido desconocido!';
-    } else {
-                alert("Es un gusto tenerte por aqui " + nombre);
-                document.getElementById('saludo').innerText = 'Bienvenido ' + nombre + '!';
-    }
+async function saludar (){
+    const { value: nombre} = await Swal.fire({
+        title: "Bienvenido queremos conocerte",
+        input: "text",
+        inputLabel: "Cuentanos como te llamas",
+        inputPlaceholder: "Ingresa tu nombre",
+        inputValidator: (value) => {
+            if(!value) {
+                return "Es necesario ingresar tu nombre";
+            }
+        }
+     });
+    if (nombre) {
+        Swal.fire(`Bienvenido ${nombre}`)
+        document.getElementById('saludo').innerText = 'Es un gusto tenerte por aquí ' + nombre + '!'; 
+    } 
 }        
 
 function AddHistorial(num1, num2, result, operacion) {
@@ -114,7 +120,13 @@ function validarInput(callback) {
     let num1 = document.getElementById('num1').value;
     let num2 = document.getElementById('num2').value;
     if (num1.length == ''|| num2.length == '') {
-        alert("Llena todos los campos");
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Algo salio mal",
+            footer: "Intenta de nuevo"
+
+        });
     } else {
         callback();
     }
@@ -136,3 +148,37 @@ function timerPagina() {
 }
 
 setInterval(timerPagina, 1000)
+
+function copiarLink () {
+    navigator.clipboard.writeText('https://www.linkedin.com/in/diego-alfonso-ram%C3%ADrez-almaguer-1ba70a315/')
+    const end = Date.now() + 1500;
+
+    const colors = ["#003aff", "#ffffff", '#7ddf0e', '#df0e0e', '#f1ea03'];
+    
+    (function frame() {
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors: colors,
+      });
+    
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: colors,
+      });
+    
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+    const cerrar = document.getElementById('popup');
+    cerrar.classList.add("popupBorrar")
+    setTimeout(function() {
+        cerrar.remove()
+    }, 2000);
+}

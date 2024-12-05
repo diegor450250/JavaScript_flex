@@ -6,15 +6,23 @@
 header {
     display: flex;
     justify-content: space-between;
+    position: sticky;
+    top: 0px;
+    background-color: white;
 }
 
 img {
     width: 90px;
-    margin-right: 25px;
+    margin: 10px;
 }
 
 .imgHeader {
     border-radius: 20px;
+}
+
+#imagenRandom {
+    width: 200px;
+    height: 250px;
 }
 
 button {
@@ -39,7 +47,7 @@ input {
 }
 
 .night-mode {
-    background-color: rgba(0, 0, 0, 0.904);
+    background-color: rgb(27, 27, 27);
     color: white;
     button {
         background-color: rgb(160, 110, 207);
@@ -50,8 +58,47 @@ input {
         background-color: rgb(160, 110, 207);
         color: white;
     }
+    #popup {
+        background-color: rgb(0, 0, 0);
+        border-color: rgb(160, 110, 207);
+    }
+    header {
+        background-color: rgb(27, 27, 27);
+    }
 }
 
 .hder {
     display: flex;
 }
+
+.popup {
+    position: sticky;
+    bottom: 5px;
+    display: flex;
+    padding: 0px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 70%;
+    margin-left: 15%;
+    align-items: center;
+    backface-visibility: hidden;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+#btnCopiar {
+    width: 160px;
+}
+
+.contentPopup {
+    margin: 1%;
+}
+
+.popupBorrar {
+    opacity: 0;
+}
+

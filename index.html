@@ -19,7 +19,7 @@
         </div>
     </header>
     <main>
-        <div>
+        <div class="imagenRandom">
             <img id="imagenRandom" alt="imagenRandom" widht="5000px">
         </div>
         <div>
@@ -48,9 +48,20 @@
             <p>Historial de resultados</p>
             <div id="contenedor-historial"></div>
         </div>
+        <div id="popup" class="popup"> 
+            <div class="contentPopup">
+                <p>¡Gracias por usar nuestra pagina!</p>
+                <p>Nos ayudarias mucho compartiendonos mediante el siguiente link</p>
+            </div>
+            <div class="contentPopup">
+                <button type="button" id="btnCopiar" onclick="copiarLink()">Copiar link</button>
+            </div>
+        </div>
     </main>
     <footer>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
     <script src="./js/js.js"></script>
 </body>
 </html>
